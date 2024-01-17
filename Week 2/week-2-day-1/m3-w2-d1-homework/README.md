@@ -106,7 +106,9 @@ Follow these steps to perform the task:
 
 ### Steps:
 
-- For the rest of the task, I will add upon the first one. Add this code block to your `app.js` file.
+- For the rest of the task, I will add upon the first one. Don't forget to comment the previous task to avoid duplicate.
+
+- Add this code block to your `app.js` file.
 
   ```js
   var dbo = client.db("statsdb");
@@ -198,7 +200,7 @@ Follow these steps to perform the task:
 
 ### Steps:
 
-- In your `app.js` file, continue from where you stopped the second task.
+- In your `app.js` file, continue from where you stopped the second task. Don't forget to comment the previous task to avoid duplicate.
 
   ```js
   var stats = [
@@ -282,6 +284,51 @@ Ketchikan 99950 AK 00000 00
 Follow these steps to perform the task:
 
 ### Steps:
+
+- In your `app.js` file, continue from where you stopped the third task. Don't forget to comment the previous task to avoid duplicate.
+
+  ```js
+  var stats = [
+    {
+      city: "Pacoima",
+      zip: "91331",
+      state: "CA",
+      income: "60360",
+      age: "33",
+    },
+    {
+      city: "Ketchikan",
+      zip: "99950",
+      state: "AK",
+      income: "00000",
+      age: "00",
+    },
+  ];
+  var dbo = client.db("statsdb");
+  dbo
+    .collection("uscensus")
+    .insertMany(stats)
+    .then(function (res) {
+      console.log(`Successfully inserted ${res.insertedCount} more documents!`);
+      client.close();
+    });
+  ```
+
+- To test that our configuration works, let's run our app using this command:
+
+  ```bash
+  node app
+  ```
+
+Now you should see a message displayed on your terminal.
+
+- Now, let's check if the documents were added into our collection:
+
+  ```bash
+  db.uscensus.find()
+  ```
+
+  This command displays all the documents added to the collection, including the new ones that was just added.
 
 ## Task 5 - Search for specific data
 

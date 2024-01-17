@@ -23,7 +23,7 @@ client.connect()
             })*/
 
         // TASK 3
-        var stats = [
+        /*var stats = [
             {
                 city: 'San Juan', 
                 zip: '00926', 
@@ -72,7 +72,31 @@ client.connect()
             .then(function(res) {
                 console.log(`Successfully inserted ${res.insertedCount} documents!`);
                 client.close();
-            })        
+            })*/    
+            
+        // TASK 4
+        var stats = [
+            {
+                city: 'Pacoima', 
+                zip: '91331', 
+                state: 'CA', 
+                income: '60360',
+                age: '33'
+            },
+            {
+                city: 'Ketchikan', 
+                zip: '99950', 
+                state: 'AK', 
+                income: '00000',
+                age: '00'
+            }
+        ];
+        var dbo = client.db('statsdb');
+        dbo.collection('uscensus').insertMany(stats)
+            .then(function(res) {
+                console.log(`Successfully inserted ${res.insertedCount} more documents!`);
+                client.close();
+            })
 
     })
     .catch(error => console.log('Database failed to connect!', error));
