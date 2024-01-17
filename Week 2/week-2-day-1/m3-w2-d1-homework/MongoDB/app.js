@@ -1,4 +1,13 @@
-var stats =[
+
+
+
+
+
+
+
+
+
+/*var stats =[
     {
         'city': 'San Juan', 
         'zip': '00926', 
@@ -41,4 +50,4 @@ var stats =[
         'income': '66453',
         'age': '35'
     }
-]
+]*/
