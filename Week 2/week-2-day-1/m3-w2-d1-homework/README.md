@@ -52,6 +52,52 @@ Follow these steps to perform the task:
 
 ### Steps:
 
+- First, we would need a `MongoClient` to be able to create our database.
+
+- Then, we create an instance of the client for our database
+
+- After creating the DB, we have to test that we can connect to it.
+
+Here's a copy of the code that does all that:
+
+    ```js
+    const { MongoClient } = require('mongodb');
+
+    // Create an instance of MongoClient for mongodb
+    // "statsdb" is the database name
+    const client = new MongoClient('mongodb://127.0.0.1:27017/statsdb');
+
+    // Connect to the newly created database
+    client.connect()
+    .then(() => {
+    console.log('Database created successfully!');
+    console.log('Connection successful');
+
+            // Close the database connection when done
+            client.close();
+        })
+        .catch(error => console.log('Database failed to connect!', error));
+    ```
+
+To test that our configuration works, let's run our app using this command:
+
+    ```bash
+    node app
+    ```
+
+Now you should see a message displayed on your terminal.
+
+You can also check that the `statsdb` DB was created, but at this point, you won't be able to see the DB because it is empty.
+
+You would only see the 3 default databases [`admin`, `config` and `local`] that are automatically created for you.
+
+To launch your mongodb shell, you can either use the command, `mongo` or `mongosh` depending on your operating system. You should see a `>` sign on a new line, that indicates your shell is ready.
+
+```bash
+# lists all the database in the server
+> show dbs
+```
+
 ## Task 2 - Create a collection
 
 Create a collection called `uscensus`. Output a message on the terminal.

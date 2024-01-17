@@ -1,4 +1,19 @@
+const { MongoClient } = require('mongodb');
 
+// Create an instance of MongoClient for mongodb
+// "statsdb" is the database name
+const client = new MongoClient('mongodb://127.0.0.1:27017/statsdb');
+
+// Connect to the newly created database
+client.connect()
+    .then(() => {
+        console.log('Database created successfully!');
+        console.log('Connection successful');
+
+        // Close the database connection when done
+        client.close();
+    })
+    .catch(error => console.log('Database failed to connect!', error));
 
 
 
