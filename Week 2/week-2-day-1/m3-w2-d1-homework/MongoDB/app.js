@@ -75,7 +75,7 @@ client.connect()
             })*/    
             
         // TASK 4
-        var stats = [
+        /*var stats = [
             {
                 city: 'Pacoima', 
                 zip: '91331', 
@@ -96,7 +96,23 @@ client.connect()
             .then(function(res) {
                 console.log(`Successfully inserted ${res.insertedCount} more documents!`);
                 client.close();
+            })*/
+
+        // TASK 5
+        var dbo = client.db('statsdb');
+        var query = { city: 'Corona', state: 'NY' }
+        dbo.collection('uscensus').find(query)
+            .toArray()
+            .then(items => {
+                if (items.length > 0) {
+                    console.log(`Successfully found ${items.length} documents.`);
+                    console.log(`Zip code for Corona, NY is ${items[0].zip}`);
+                } else {
+                    console.log('No matching document found.');
+                }
+                client.close();
             })
+            .catch(error => console.log('Error fetching data:', error));
 
     })
     .catch(error => console.log('Database failed to connect!', error));

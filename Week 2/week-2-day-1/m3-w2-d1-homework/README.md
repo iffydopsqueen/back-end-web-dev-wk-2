@@ -338,6 +338,35 @@ Follow these steps to perform the task:
 
 ### Steps:
 
+- In your `app.js` file, continue from where you stopped the fourth task. Don't forget to comment the previous task to avoid duplicate.
+
+  ```js
+  var dbo = client.db("statsdb");
+  var query = { city: "Corona", state: "NY" };
+  dbo
+    .collection("uscensus")
+    .find(query)
+    .toArray()
+    .then((items) => {
+      if (items.length > 0) {
+        console.log(`Successfully found ${items.length} documents.`);
+        console.log(`Zip code for Corona, NY is ${items[0].zip}`);
+      } else {
+        console.log("No matching document found.");
+      }
+      client.close();
+    })
+    .catch((error) => console.log("Error fetching data:", error));
+  ```
+
+- To test that our configuration works, let's run our app using this command:
+
+  ```bash
+  node app
+  ```
+
+A message with the correct zipcode should be displayed on your terminal.
+
 ## Task 6 - Filter data using the "query" object
 
 Find out the income for all cities in California. Example: `var myquery = { address: /^S/ };`, query all address that starts with **"S"**. Output a message on the terminal.
