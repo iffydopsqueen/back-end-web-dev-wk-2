@@ -7,11 +7,21 @@ const client = new MongoClient('mongodb://127.0.0.1:27017/statsdb');
 // Connect to the newly created database
 client.connect()
     .then(() => {
-        console.log('Database created successfully!');
-        console.log('Connection successful');
+        // TASK 1 
+        // console.log('Database created successfully!');
+        // console.log('Connection successful');
 
         // Close the database connection when done
-        client.close();
+        // client.close();
+
+        // TASK 2
+        var dbo = client.db('statsdb');
+        dbo.createCollection('uscensus')
+            .then(function() {
+                console.log('Collection is created!');
+                client.close();
+            })
+
     })
     .catch(error => console.log('Database failed to connect!', error));
 

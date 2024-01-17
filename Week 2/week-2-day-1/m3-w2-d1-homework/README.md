@@ -106,6 +106,33 @@ Follow these steps to perform the task:
 
 ### Steps:
 
+- For the rest of the task, I will add upon the first one. Add this code block to your `app.js` file.
+
+  ```js
+  var dbo = client.db("statsdb");
+  dbo.createCollection("uscensus").then(function () {
+    console.log("Collection is created!");
+    client.close();
+  });
+  ```
+
+- Let's check if the collection was created by running this command again:
+
+  ```bash
+  show dbs
+  ```
+
+  Now you should see `statsdb` displayed because it is no longer empty.
+
+  We will go ahead and switch to the database so we can see our new collection, `uscensus` that is added. Do this by running these commands:
+
+  ```bash
+  use statsdb
+
+  # display all collections
+  show collections
+  ```
+
 ## Task 3 - Add data to collection
 
 Add the given data (the zip file) to the collection. Output a message on the terminal.
