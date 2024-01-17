@@ -116,7 +116,15 @@ Follow these steps to perform the task:
   });
   ```
 
-- Let's check if the collection was created by running this command again:
+- To test that our configuration works, let's run our app using this command:
+
+  ```bash
+  node app
+  ```
+
+Now you should see a message displayed on your terminal.
+
+- Now, let's check if the collection was created in the DB by running this command again:
 
   ```bash
   show dbs
@@ -139,9 +147,129 @@ Add the given data (the zip file) to the collection. Output a message on the ter
 
 - The `.zip` file that was given is this:
 
+  ```js
+  var stats = [
+    {
+      city: "San Juan",
+      zip: "00926",
+      state: "PR",
+      income: "34781",
+      age: "44",
+    },
+    {
+      city: "Corona",
+      zip: "11368",
+      state: "NY",
+      income: "50797",
+      age: "32",
+    },
+    {
+      city: "Chicago",
+      zip: "60629",
+      state: "IL",
+      income: "42019",
+      age: "31",
+    },
+    {
+      city: "El Paso",
+      zip: "79936",
+      state: "TX",
+      income: "54692",
+      age: "31",
+    },
+    {
+      city: "Los Angeles",
+      zip: "90011",
+      state: "CA",
+      income: "36954",
+      age: "28",
+    },
+    {
+      city: "Norwalk",
+      zip: "90650",
+      state: "CA",
+      income: "66453",
+      age: "35",
+    },
+  ];
+  ```
+
 Follow these steps to perform the task:
 
 ### Steps:
+
+- In your `app.js` file, continue from where you stopped the second task.
+
+  ```js
+  var stats = [
+    {
+      city: "San Juan",
+      zip: "00926",
+      state: "PR",
+      income: "34781",
+      age: "44",
+    },
+    {
+      city: "Corona",
+      zip: "11368",
+      state: "NY",
+      income: "50797",
+      age: "32",
+    },
+    {
+      city: "Chicago",
+      zip: "60629",
+      state: "IL",
+      income: "42019",
+      age: "31",
+    },
+    {
+      city: "El Paso",
+      zip: "79936",
+      state: "TX",
+      income: "54692",
+      age: "31",
+    },
+    {
+      city: "Los Angeles",
+      zip: "90011",
+      state: "CA",
+      income: "36954",
+      age: "28",
+    },
+    {
+      city: "Norwalk",
+      zip: "90650",
+      state: "CA",
+      income: "66453",
+      age: "35",
+    },
+  ];
+  var dbo = client.db("statsdb");
+  dbo
+    .collection("uscensus")
+    .insertMany(stats)
+    .then(function (res) {
+      console.log(`Successfully inserted ${res.insertedCount} documents!`);
+      client.close();
+    });
+  ```
+
+- To test that our configuration works, let's run our app using this command:
+
+  ```bash
+  node app
+  ```
+
+Now you should see a message displayed on your terminal.
+
+- Now, let's check if the documents were added into our collection:
+
+  ```bash
+  db.uscensus.find()
+  ```
+
+  This command displays all the documents added to the collection.
 
 ## Task 4 - Add records to the collection
 
