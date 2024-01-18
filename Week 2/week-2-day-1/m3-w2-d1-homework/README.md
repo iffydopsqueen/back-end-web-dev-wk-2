@@ -2,7 +2,24 @@
 
 **Table of Contents**
 
--
+- [Setup](#setup)
+- [Task 1 - Create a database](#task-1---create-a-database)
+  - [Steps:](#steps-)
+- [Task 2 - Create a collection](#task-2---create-a-collection)
+  - [Steps:](#steps--1)
+- [Task 3 - Add data to collection](#task-3---add-data-to-collection)
+  - [Steps:](#steps--2)
+- [Task 4 - Add records to the collection](#task-4---add-records-to-the-collection)
+  - [Steps:](#steps--3)
+- [Task 5 - Search for specific data](#task-5---search-for-specific-data)
+  - [Steps:](#steps--4)
+- [Task 6 - Filter data using the "query" object](#task-6---filter-data-using-the--query--object)
+  - [Steps:](#steps--5)
+- [Task 7 - Update a document](#task-7---update-a-document)
+  - [Steps:](#steps--6)
+- [Task 8 - Sort records by "State"](#task-8---sort-records-by--state-)
+  - [Steps:](#steps--7)
+- [Extras](#extras)
 
 Before we start working on each of the tasks, let's set up our DB environment.
 
@@ -87,6 +104,8 @@ To test that our configuration works, let's run our app using this command:
 
 Now you should see a message displayed on your terminal.
 
+![Task 1 - Create a database](./screenshots/task_1.png)
+
 You can also check that the `statsdb` DB was created, but at this point, you won't be able to see the DB because it is empty.
 
 You would only see the 3 default databases [`admin`, `config` and `local`] that are automatically created for you.
@@ -125,6 +144,8 @@ Follow these steps to perform the task:
   ```
 
 Now you should see a message displayed on your terminal.
+
+![Task 2 - Create a collection](./screenshots/task_2.png)
 
 - Now, let's check if the collection was created in the DB by running this command again:
 
@@ -265,6 +286,8 @@ Follow these steps to perform the task:
 
 Now you should see a message displayed on your terminal.
 
+![Task 3 - Add data to collection](./screenshots/task_3.png)
+
 - Now, let's check if the documents were added into our collection:
 
   ```bash
@@ -322,6 +345,8 @@ Follow these steps to perform the task:
 
 Now you should see a message displayed on your terminal.
 
+![Task 4 - Add records to the collection](./screenshots/task_4.png)
+
 - Now, let's check if the documents were added into our collection:
 
   ```bash
@@ -367,6 +392,8 @@ Follow these steps to perform the task:
 
 A message with the correct zipcode should be displayed on your terminal.
 
+![Task 5 - Search for specific data](./screenshots/task_5.png)
+
 ## Task 6 - Filter data using the "query" object
 
 Find out the income for all cities in California. Example: `var myquery = { address: /^S/ };`, query all address that starts with **"S"**. Output a message on the terminal.
@@ -408,6 +435,8 @@ Follow these steps to perform the task:
 
 A message with the correct city and income should be displayed on your terminal.
 
+![Task 6 - Filter data using the "query" object](./screenshots/task_6.png)
+
 ## Task 7 - Update a document
 
 Update the income and age for Alaska: `38910` and `46` respectively. Output a message
@@ -439,6 +468,8 @@ Follow these steps to perform the task:
   ```
 
 Now you should see a message displayed on your terminal.
+
+![Task 7 - Update a document](./screenshots/task_7.png)
 
 - Now, let's check if the documents were added into our collection:
 
@@ -481,3 +512,9 @@ Follow these steps to perform the task:
   ```
 
 You should see the entire document sorted by alphabetical order displayed on your terminal.
+
+![Sort records by "State"](./screenshots/task_8.png)
+
+## Extras
+
+- [Markdown TOC](https://ecotrust-canada.github.io/markdown-toc/)
