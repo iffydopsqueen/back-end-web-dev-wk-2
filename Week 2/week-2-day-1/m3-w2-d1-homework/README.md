@@ -375,6 +375,39 @@ Follow these steps to perform the task:
 
 ### Steps:
 
+- In your `app.js` file, continue from where you stopped the fifth task. Don't forget to comment the previous task to avoid duplicate.
+
+  ```js
+  var dbo = client.db("statsdb");
+  var query = { state: "CA" };
+  dbo
+    .collection("uscensus")
+    .find(query)
+    .toArray()
+    .then((items) => {
+      if (items.length > 0) {
+        console.log(`Successfully found ${items.length} documents.`);
+        console.log();
+        items.forEach((item) =>
+          console.log(`The income for "${item.city}" is ${item.income}.`)
+        );
+        // items.forEach(item => console.log(item));
+      } else {
+        console.log("No matching document found.");
+      }
+      client.close();
+    })
+    .catch((error) => console.log("Error fetching data:", error));
+  ```
+
+- To test that our configuration works, let's run our app using this command:
+
+  ```bash
+  node app
+  ```
+
+A message with the correct city and income should be displayed on your terminal.
+
 ## Task 7 - Update a document
 
 Update the income and age for Alaska: `38910` and `46` respectively. Output a message
@@ -383,6 +416,12 @@ on the terminal.
 Follow these steps to perform the task:
 
 ### Steps:
+
+- In your `app.js` file, continue from where you stopped the sixth task. Don't forget to comment the previous task to avoid duplicate.
+
+  ```js
+
+  ```
 
 ## Task 8 - Sort records by "State"
 

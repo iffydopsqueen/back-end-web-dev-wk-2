@@ -99,14 +99,32 @@ client.connect()
             })*/
 
         // TASK 5
-        var dbo = client.db('statsdb');
-        var query = { city: 'Corona', state: 'NY' }
+        /*var dbo = client.db('statsdb');
+        var query = { city: 'Corona', state: 'NY' };
         dbo.collection('uscensus').find(query)
             .toArray()
             .then(items => {
                 if (items.length > 0) {
                     console.log(`Successfully found ${items.length} documents.`);
                     console.log(`Zip code for Corona, NY is ${items[0].zip}`);
+                } else {
+                    console.log('No matching document found.');
+                }
+                client.close();
+            })
+            .catch(error => console.log('Error fetching data:', error));*/
+        
+        // TASK 6
+        var dbo = client.db('statsdb');
+        var query = { state: 'CA' };
+        dbo.collection('uscensus').find(query)
+            .toArray()
+            .then(items => {
+                if (items.length > 0) {
+                    console.log(`Successfully found ${items.length} documents.`);
+                    console.log();
+                    items.forEach(item => console.log(`The income for "${item.city}" is ${item.income}.`));
+                    // items.forEach(item => console.log(item));
                 } else {
                     console.log('No matching document found.');
                 }
