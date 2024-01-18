@@ -4,21 +4,13 @@
 
 - [Setup](#setup)
 - [Task 1 - Create a database](#task-1---create-a-database)
-  - [Steps:](#steps-)
 - [Task 2 - Create a collection](#task-2---create-a-collection)
-  - [Steps:](#steps--1)
 - [Task 3 - Add data to collection](#task-3---add-data-to-collection)
-  - [Steps:](#steps--2)
 - [Task 4 - Add records to the collection](#task-4---add-records-to-the-collection)
-  - [Steps:](#steps--3)
 - [Task 5 - Search for specific data](#task-5---search-for-specific-data)
-  - [Steps:](#steps--4)
 - [Task 6 - Filter data using the "query" object](#task-6---filter-data-using-the--query--object)
-  - [Steps:](#steps--5)
 - [Task 7 - Update a document](#task-7---update-a-document)
-  - [Steps:](#steps--6)
 - [Task 8 - Sort records by "State"](#task-8---sort-records-by--state-)
-  - [Steps:](#steps--7)
 - [Extras](#extras)
 
 Before we start working on each of the tasks, let's set up our DB environment.
