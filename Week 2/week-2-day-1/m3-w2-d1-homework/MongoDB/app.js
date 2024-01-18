@@ -133,12 +133,25 @@ client.connect()
             .catch(error => console.log('Error fetching data:', error));*/
         
         // TASK 7
-        var dbo = client.db('statsdb');
+        /*var dbo = client.db('statsdb');
         var myquery = { state: 'AK' };
         var newvalues = { $set: { income: '38910', age: '46' }};
         dbo.collection('uscensus').updateOne(myquery, newvalues)
             .then(function() {
                 console.log('A document has been updated!');
+                client.close();
+            })*/
+
+        // TASK 8
+        var dbo = client.db('statsdb');
+        var mysort = { state: 1 };
+        dbo.collection('uscensus').find()
+            .sort(mysort)
+            .toArray()
+            .then(items => {
+                console.log(`Successfully sorted ${items.length} documents.`);
+                console.log();
+                console.log(items);
                 client.close();
             })
 

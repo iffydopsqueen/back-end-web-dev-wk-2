@@ -455,3 +455,29 @@ Sort records in ascending order by state. **Note:** `1` (ascending) `-1` (descen
 Follow these steps to perform the task:
 
 ### Steps:
+
+- In your `app.js` file, continue from where you stopped the seventh task. Don't forget to comment the previous task to avoid duplicate.
+
+  ```js
+  var dbo = client.db("statsdb");
+  var mysort = { state: 1 };
+  dbo
+    .collection("uscensus")
+    .find()
+    .sort(mysort)
+    .toArray()
+    .then((items) => {
+      console.log(`Successfully sorted ${items.length} documents.`);
+      console.log();
+      console.log(items);
+      client.close();
+    });
+  ```
+
+- To test that our configuration works, let's run our app using this command:
+
+  ```bash
+  node app
+  ```
+
+You should see the entire document sorted by alphabetical order displayed on your terminal.
