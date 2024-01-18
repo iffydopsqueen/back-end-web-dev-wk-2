@@ -69,30 +69,31 @@ Follow these steps to perform the task:
 
 Here's a copy of the code that does all that:
 
-    ```js
-    const { MongoClient } = require('mongodb');
+```js
+const { MongoClient } = require("mongodb");
 
-    // Create an instance of MongoClient for mongodb
-    // "statsdb" is the database name
-    const client = new MongoClient('mongodb://127.0.0.1:27017/statsdb');
+// Create an instance of MongoClient for mongodb
+// "statsdb" is the database name
+const client = new MongoClient("mongodb://127.0.0.1:27017/statsdb");
 
-    // Connect to the newly created database
-    client.connect()
-    .then(() => {
-    console.log('Database created successfully!');
-    console.log('Connection successful');
+// Connect to the newly created database
+client
+  .connect()
+  .then(() => {
+    console.log("Database created successfully!");
+    console.log("Connection successful");
 
-            // Close the database connection when done
-            client.close();
-        })
-        .catch(error => console.log('Database failed to connect!', error));
-    ```
+    // Close the database connection when done
+    client.close();
+  })
+  .catch((error) => console.log("Database failed to connect!", error));
+```
 
 To test that our configuration works, let's run our app using this command:
 
-    ```bash
-    node app
-    ```
+```bash
+node app
+```
 
 Now you should see a message displayed on your terminal.
 
