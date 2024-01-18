@@ -115,7 +115,7 @@ client.connect()
             .catch(error => console.log('Error fetching data:', error));*/
         
         // TASK 6
-        var dbo = client.db('statsdb');
+        /*var dbo = client.db('statsdb');
         var query = { state: 'CA' };
         dbo.collection('uscensus').find(query)
             .toArray()
@@ -130,7 +130,17 @@ client.connect()
                 }
                 client.close();
             })
-            .catch(error => console.log('Error fetching data:', error));
+            .catch(error => console.log('Error fetching data:', error));*/
+        
+        // TASK 7
+        var dbo = client.db('statsdb');
+        var myquery = { state: 'AK' };
+        var newvalues = { $set: { income: '38910', age: '46' }};
+        dbo.collection('uscensus').updateOne(myquery, newvalues)
+            .then(function() {
+                console.log('A document has been updated!');
+                client.close();
+            })
 
     })
     .catch(error => console.log('Database failed to connect!', error));

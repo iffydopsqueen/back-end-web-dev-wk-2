@@ -420,8 +420,33 @@ Follow these steps to perform the task:
 - In your `app.js` file, continue from where you stopped the sixth task. Don't forget to comment the previous task to avoid duplicate.
 
   ```js
-
+  var dbo = client.db("statsdb");
+  var myquery = { state: "AK" };
+  var newvalues = { $set: { income: "38910", age: "46" } };
+  dbo
+    .collection("uscensus")
+    .updateOne(myquery, newvalues)
+    .then(function () {
+      console.log("A document has been updated!");
+      client.close();
+    });
   ```
+
+- To test that our configuration works, let's run our app using this command:
+
+  ```bash
+  node app
+  ```
+
+Now you should see a message displayed on your terminal.
+
+- Now, let's check if the documents were added into our collection:
+
+  ```bash
+  db.uscensus.find()
+  ```
+
+  This command displays all the documents added to the collection, including the one that was just updated.
 
 ## Task 8 - Sort records by "State"
 
