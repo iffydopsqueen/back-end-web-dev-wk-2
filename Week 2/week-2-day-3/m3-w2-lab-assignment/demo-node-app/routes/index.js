@@ -9,6 +9,14 @@ router.get('/', function(req, res) {
     res.render('form', { title: 'Registration form' });
 });
 
+router.get('/registrations', (req, res) => {
+    Registration.find()
+        .then((registrations) => {
+            res.render('index', { title: 'Listing registrations' });
+        })
+        .catch(() => { res.send('Sorry! Something went wrong.'); });
+});
+
 router.post('/', 
     [
     check('name')
