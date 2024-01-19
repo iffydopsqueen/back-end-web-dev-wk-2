@@ -98,7 +98,7 @@ let count;
 
 const startTimer = () => {
     clearInterval(timer); //clears timer before timer starts. This fixes issue if timer is triggered again, when already running. 
-    count = 0, timer = setInterval(function () {
+    count = 0, timer = setInterval(() => {
         count = count++;
         document.getElementById("timer").firstChild.innerText = count++;
 
@@ -153,19 +153,90 @@ const displayTile = (e) => {
     }
 }
 
+const checkMatch = (tileIcons, tileIds, n) => {
+    console.log(n);
+    console.log(n+1);
+        if(tileIcons[n] !== tileIcons[n+1]){
+            console.log("no match");
+            setTimeout(() => {
+                    document.getElementById(tileIds[n+1]).classList.remove("displayTile");
+                    document.getElementById(tileIds[n]).classList.remove("displayTile");
+            }, 1000);  
+        } else {
+            console.log("match");
+            console.log(n);
+            document.getElementById(tileIds[n]).style.backgroundColor = "green";
+            document.getElementById(tileIds[n+1]).style.backgroundColor = "green";
+            document.getElementById(tileIds[n]).setAttribute("guess","correct")   
+            document.getElementById(tileIds[n+1]).setAttribute("guess","correct")   
+            document.getElementById(tileIds[n]).removeEventListener("click", displayTile);
+            document.getElementById(tileIds[n+1]).removeEventListener("click", displayTile); 
+        }
+}
 
+//countClicks -> calculates number of user clicks -> needed to calculate score
+const countMoves = () => {
+    clicks = n;
+    document.getElementById("clicks").firstChild.innerHTML = clicks;
+}
 
+//ClearTiles -> Clear tiles when new game is started;
+const clearTiles = () => {
+    for(let n = 0; n < tiles.length; n++){
+        tiles[n].style.fontSize = "0em";
+        tiles[n].style.backgroundColor = "#44445a";
+    }
+}
 
+/*match tiles -> when one tile is clicked and displayed, check if next tile clicked has the same attribute value
+if match icons remain displayed and correctly guessed tiles become disabled. */
 
+//countCorrectAnswers -> count the number of tiles with value correct. each time a pair of tiles are matched, add 1 to the coundCorrectAnswers value;
 
+//compvareGAme -> When the number of correct answers == the number of cells the game can end.
 
+//calculateScore -> adds number of clicks and elapsed time to calculate score & displays score upon game compvarion. 
 
+const calculateScore = () => {
+    timeScore = parseInt(timeScore);
+    const calculatedScore = (timeScore + clicks);
+    console.log(calculatedScore);
+    document.querySelector("#score").firstChild.innerHTML = calculatedScore;
+}
 
-function displayTile(e) {
-    
-    
+//refresh/reset -> click button, invokes endGame() the reset tiles values, and return their default styling.
+
+//additional levels of difficulty
+
+let newRGB;
+
+const generateRGBVal = () => {
+    const generateRandomColor = () => {
+        let r = Math.random();
+        r = r * 255;
+        r = Math.round(r);
+        return r;
+    };
+
+    const rgbValue = [];
+    for (let i = 0; i <= 2; i++) {
+        const singleVal = generateRandomColor();
+        rgbValue.push(singleVal);
+    }
+    newRGB = `rgb(${rgbValue[0]},${rgbValue[1]},${rgbValue[2]})`;
+    return newRGB;
 };
 
+//additional iterations/Future development
+// publish leaderboard;
+//use api to generate random icon or picture
 
-
-
+const resetTiles = () => {
+    for(tile of tiles){
+        tile.style.backgroundColor ="#44445a";
+        tile.removeAttribute("state");
+        tile.classList.remove("hideTile"); 
+        tile.classList.remove("displayTile"); 
+        
+    }
+}
